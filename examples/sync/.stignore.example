@@ -1,0 +1,19 @@
+# Copy to the ROOT of the actual Syncthing shared folder as ".stignore".
+# Syncthing does NOT sync the .stignore file itself.
+.git
+.claude
+.ssh
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+token.json
+node_modules
+.venv
+__pycache__
+.cache
+# Deliberately NOT ignored: .sessions, docs, artifacts
+# Review artifacts for sensitive information before enabling synchronization.
