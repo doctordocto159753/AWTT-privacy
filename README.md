@@ -34,6 +34,7 @@ Linux VPS [کاربر محدود]
 | تصمیم‌های معماری، مرزها و محدودیت‌ها | [معماری](docs/01-architecture.md) |
 | راه‌اندازی صفر تا صد روی Linux و Windows | [راهنمای گام‌به‌گام](docs/02-step-by-step.md) |
 | خطاهای واقعی مسیر و روش تشخیص | [عیب‌یابی](docs/03-troubleshooting.md) |
+| روایت تصمیم‌ها و مسیر اجرای موفق | [مطالعه موردی](docs/06-case-study.md) |
 | مدل تهدید، ایمنی و حریم خصوصی | [امنیت و محدودیت‌ها](docs/04-security.md) |
 | چک‌لیست آزمایش عملی | [تست پذیرش](docs/05-test-plan.md) |
 | کد نمونه Hook | [session.py](examples/project-template/.claude/hooks/session.py) |
