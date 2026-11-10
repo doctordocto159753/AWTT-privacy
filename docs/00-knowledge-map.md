@@ -4,7 +4,7 @@
 
 ## نقشه مفهومی
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
     U[کاربر در Windows] --> VS[VS Code Remote SSH]
     VS --> V[VPS / Linux / claude-runner]
@@ -20,7 +20,7 @@ flowchart TD
     P[قوانین و شرایط سرویس] -. مستقل از .-> C
     SEC[کنترل امنیت و Ignore] -. محافظت .-> W
     SEC -. محافظت .-> M
-\`\`\`
+```
 
 ### مسیرها و مسئولیت‌ها
 
@@ -39,7 +39,7 @@ flowchart TD
 
 ## مدل جریان رویداد
 
-\`\`\`mermaid
+```mermaid
 stateDiagram-v2
     [*] --> SessionStart
     SessionStart --> UserPromptSubmit
@@ -54,7 +54,7 @@ stateDiagram-v2
     FileWatcher --> PendingSync: لپ‌تاپ آفلاین است
     PendingSync --> LaptopMirror: اتصال برمی‌گردد
     LaptopMirror --> [*]
-\`\`\`
+```
 
 **استثنا:** قطع ناگهانی فرایند یا خطای اجرای ایجنت الزاماً Stop را اجرا نمی‌کند. Syncthing مستقل از Hook تغییرات فایل را تشخیص می‌دهد، اما Manifest ممکن است آخرین نوبت را «تکمیل‌شده» نشان ندهد.
 
@@ -62,10 +62,10 @@ stateDiagram-v2
 
 | شناسه | مشاهده / تصمیم | نوع شواهد |
 |---|---|---|
-| OBS-01 | اجرای CLI زیر کاربر محدود و اجرای \`whoami\` و \`git status\` روی VPS موفق شد | تأیید کاربر در اجرای واقعی |
+| OBS-01 | اجرای CLI زیر کاربر محدود و اجرای `whoami` و `git status` روی VPS موفق شد | تأیید کاربر در اجرای واقعی |
 | OBS-02 | پنل VS Code Remote نهایتاً به VPS متصل و اجرای Agent در پوشه پروژه تأیید شد | تأیید کاربر |
 | OBS-03 | Hookها و Checkpoint در پروژه آزمایشی اجرا شدند | تأیید کاربر؛ فایل واقعی سرور منتشر نشده |
-| OBS-04 | اتصال دو دستگاه Syncthing و دریافت \`mirror-test.txt\` روی Windows موفق بود | تأیید کاربر |
+| OBS-04 | اتصال دو دستگاه Syncthing و دریافت `mirror-test.txt` روی Windows موفق بود | تأیید کاربر |
 | OBS-05 | بازیابی خودکار SSH Tunnel پس از اصلاح نام میزبان موفق شد | تأیید کاربر |
 | DOC-01 | Remote SSH افزونه‌های Workspace را روی SSH host اجرا می‌کند | [VS Code](https://code.visualstudio.com/docs/remote/ssh) |
 | DOC-02 | Stop و SessionStart و UserPromptSubmit رویدادهای رسمی هستند | [Claude Hooks](https://code.claude.com/docs/en/hooks) |
@@ -74,7 +74,7 @@ stateDiagram-v2
 
 ## مسائل رخ‌داده و رابطه علت و رفع خطا
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
     A[اجرای scp مخصوص PowerShell داخل Bash] --> B[No such file or directory]
     B --> C[کلید عمومی از لپ‌تاپ به authorized_keys]
@@ -86,7 +86,7 @@ flowchart LR
     K --> L[SSH Config صریح یا آدرس واقعی]
     M[8385 در دسترس نیست] --> N[تونل SSH قطع]
     N --> O[تست دستی سپس Task]
-\`\`\`
+```
 
 برای دستورات رفع خطا: [دفترچه عیب‌یابی](03-troubleshooting.md).
 
@@ -94,13 +94,13 @@ flowchart LR
 
 - **VPS / Source of Truth:** سروری که نسخه اصلی کار آنجاست.
 - **Mirror:** کپی فایل روی لپ‌تاپ؛ لزوماً بکاپ مستقل نیست.
-- **SSH Host Alias:** نام دلخواه در فایل \`.ssh/config\` که بدون تعریف به‌عنوان DNS واقعی کار نمی‌کند.
+- **SSH Host Alias:** نام دلخواه در فایل `.ssh/config` که بدون تعریف به‌عنوان DNS واقعی کار نمی‌کند.
 - **Hook:** اسکریپتی که در لحظه یک رویداد مشخص اجرا می‌شود.
 - **Session ID:** شناسه نشست گفتگو، متفاوت از Branch و نام پروژه.
 - **Manifest:** فهرست مختصر وضعیت یک مرحله و خروجی‌های آن.
 - **Checkpoint:** ثبت گزینش‌شده تغییرات در Git.
 - **Send Only / Receive Only:** سیاست انتقال یک‌طرفه پوشه در Syncthing.
-- **Loopback:** آدرس \`127.0.0.1\` قابل دسترسی فقط از همان دستگاه.
+- **Loopback:** آدرس `127.0.0.1` قابل دسترسی فقط از همان دستگاه.
 - **Harness:** محیطی که اجرای ایجنت و ابزارها را مدیریت می‌کند؛ Claude Code مستقل با Chat/Copilot VS Code الزاماً یکسان نیست.
 
 ## ترتیب مطالعه
